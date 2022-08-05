@@ -1,0 +1,119 @@
+/* 
+  width: 1700px;
+  margin: 0 auto; */
+
+:root {
+  --plyr-color-main: rgb(26, 144, 207);
+}
+
+.movie--page {
+  width: 1800px;
+  margin: 0 auto;
+}
+
+.bg {
+  background: #1a1f38;
+}
+
+.movie--player-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.movie--player-content input {
+  cursor: pointer;
+}
+
+.movie--details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+  width: 100%;
+}
+
+.movie--page-poster {
+  width: 233px;
+  height: 345px;
+  border-radius: 10px;
+}
+
+.movie--details-container {
+  /* width: 1400px; */
+  width: 80%;
+  /* width: 100%; */
+  /* height: 329px; */
+  background: rgb(28 42 48 / 41%);
+
+  border-radius: 10px;
+  padding: 16px;
+  /* overflow-y: scroll; */
+  word-wrap: break-word;
+}
+
+/* .movie--details-container::-webkit-scrollbar {
+  width: 7px;
+
+  background-color: #121212;
+}
+
+.movie--details-container::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 20px;
+} */
+
+.movie--page-details > p {
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.movie--page-details span {
+  color: rgb(26, 144, 207);
+  cursor: pointer;
+}
+
+.movie--page-title {
+  margin-bottom: 20px;
+  color: #fff;
+  border-bottom: 1px solid rgb(26, 144, 207);
+}
+
+/* ბექგრაუნდიიიიიი */
+.background--image-content {
+  width: 100%;
+  height: 464px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.background--image {
+  filter: brightness(0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.comments--section-title {
+  color: #fff;
+}
+
+.movie--details-content {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  gap: 40px;
+}
+
+/* Video player */
+
+video {
+  outline: none;
+}

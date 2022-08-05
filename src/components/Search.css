@@ -1,0 +1,102 @@
+.navbar .search--field {
+  /* padding: 10px 40px; */
+  font-size: 18px;
+  padding: 10px 40px 10px 0;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background-color: rgba(196, 196, 196, 0.3);
+  color: #e4e4e4;
+  text-align: left;
+  z-index: 0;
+  transition: 0.5s;
+  /* display: none; */
+}
+
+.movie--result a {
+  font-size: 16px;
+}
+
+.icon-rtl {
+  background: url('../assets/icons/search_iconn.svg') no-repeat right;
+  background-size: 20px;
+  background-position-x: 180px;
+}
+
+.navbar .search--field:focus {
+  transform: scaleX(1.2);
+  background-size: 0;
+}
+
+.navbar .search--container {
+  position: absolute;
+  top: 2.5%;
+  right: 1%;
+  background-color: #1a1f38;
+  color: #fff;
+  width: 400px;
+  z-index: 5;
+  border: none;
+  border-radius: 5px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.search--field:focus + .search--container {
+  visibility: visible;
+  opacity: 1;
+}
+
+.search--container .movies--list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.search--container .movies--list .movie--container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0 10px 0 10px;
+  transition: 0.5s;
+  margin: 0;
+}
+.wrap--movie-container {
+  /* display: none; */
+}
+
+.search--container-margin {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search--container .search--container-line {
+  border-top: 1px solid #fff;
+}
+
+.search--container-result {
+  text-align: center;
+  padding: 20px;
+}
+
+.search--container-result-poster {
+  width: 50px;
+}
+
+.search--container .movie--container:hover {
+  opacity: 0.5;
+}
+
+.error {
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+}
+
+.error p {
+  text-align: center;
+  padding: 20px;
+}

@@ -1,0 +1,39 @@
+footer {
+  background-color: #010931;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  padding: 30px 16px;
+  position: absolute;
+  bottom: -7%;
+  z-index: 6;
+}
+
+footer div h2,
+p {
+  color: #fff;
+}
+
+footer div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.author a {
+  text-decoration: none;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  cursor: pointer;
+}

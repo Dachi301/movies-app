@@ -1,0 +1,25 @@
+.text--field .field {
+  font-size: 18px;
+  padding: 10px 40px 10px 0;
+  width: 300px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background-color: rgba(196, 196, 196, 0.3);
+  color: #e4e4e4;
+  text-align: left;
+  z-index: 0;
+  transition: 0.5s;
+  /* margin-top: 5px; */
+}
+
+.text--field {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.text--field .field:focus {
+  transform: scaleX(1.1);
+}

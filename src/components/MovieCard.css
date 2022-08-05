@@ -1,0 +1,157 @@
+.movie--container {
+  position: relative;
+}
+
+.movie--container .poster {
+  width: 213px;
+  height: 303px;
+  border-radius: 10px;
+  transition: 0.5s;
+  cursor: pointer;
+  z-index: 0;
+}
+
+.movie--container .poster-watch--btn {
+  position: absolute;
+  top: 8rem;
+  left: 5.5rem;
+  /* transform: translate(-50%, -50%); */
+  font-size: 18px;
+  padding: 10px;
+  letter-spacing: 2px;
+  border: none;
+  cursor: pointer;
+  color: #e4e4e4;
+  background-color: #1a1f38;
+  border-radius: 8px;
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.imdb--rating {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  font-size: 16px;
+  padding: 3px 12px 3px 12px;
+  border: none;
+  border-radius: 2px;
+  background-color: #f5c518;
+}
+
+.movie--info {
+  position: absolute;
+  top: 0;
+  left: 65%;
+  z-index: 2;
+  background-color: #1a1f38;
+  padding: 12px 10px 20px 10px;
+  width: 350px;
+  height: 300px;
+  border-radius: 10px;
+  overflow-y: scroll;
+  display: none;
+  z-index: 2;
+}
+
+.movie--info::-webkit-scrollbar {
+  width: 7px;
+
+  background-color: #121212;
+}
+
+.movie--info::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+.movie--info > p {
+  margin-bottom: 12px;
+}
+
+.movie--info span {
+  color: rgb(26, 144, 207);
+}
+
+.poster-watch--btn::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0.5;
+}
+
+.movie--container:hover .poster-watch--btn {
+  opacity: 1;
+}
+
+.movie--container:hover .poster {
+  opacity: 0.5;
+}
+
+.movie--container:hover .imdb--rating {
+  opacity: 1;
+}
+
+.movie--container:hover .movie--info {
+  display: block;
+}
+
+.movie--container:nth-child(1) {
+  opacity: 1;
+}
+
+.movie--info .movie--title {
+  border-bottom: 1px solid rgb(26, 144, 207);
+}
+
+.movie--year {
+  margin-top: 10px;
+}
+
+.play--btn-homepage {
+  color: #fff;
+}
+
+@media screen and (max-width: 1725px) {
+  .movie--info {
+    width: 16rem;
+    height: 19rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .movie--container .poster {
+    width: 40vh;
+    height: 55vh;
+    border-radius: 10px;
+    transition: 0.5s;
+    cursor: pointer;
+    z-index: 0;
+  }
+
+  .movie--container:hover .movie--info {
+    display: none;
+  }
+
+  .movie--container .poster-watch--btn {
+    position: absolute;
+    top: 7rem;
+    left: 4.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .movie--container .poster {
+    width: 10rem;
+    height: 15rem;
+  }
+
+  .movie--container .poster-watch--btn {
+    position: absolute;
+    top: 7rem;
+    left: 4rem;
+  }
+}

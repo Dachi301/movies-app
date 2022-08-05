@@ -1,0 +1,15 @@
+.authorization--form {
+  width: 1700px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.authorization--form h1 {
+  color: #fff;
+}

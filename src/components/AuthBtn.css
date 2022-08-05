@@ -1,0 +1,22 @@
+.auth--btn {
+  padding: 15px 40px 15px 40px;
+  border: none;
+  border-radius: 5px;
+  letter-spacing: 1.3px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 40px;
+}
+
+.auth--btn:active {
+  transform: translateY(2px);
+}
+/* 
+.remember--me {
+  margin: 20px;
+} */
+
+.remember--me-content {
+  display: flex;
+  gap: 10px;
+}
