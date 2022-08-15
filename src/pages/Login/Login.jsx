@@ -1,3 +1,5 @@
+import React from 'react'
+
 // styles
 import './Login.css'
 
@@ -15,22 +17,21 @@ export default function Login() {
   const [formValues, setFormValues] = useState(initialValues)
   const [formErrors, setFormErrors] = useState({})
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target
     setFormValues({ ...formValues, [name]: value })
-    // console.log()
   }
 
-  const handleCheckboxChange = (e) => {
+  const handleCheckboxChange = e => {
     setFormValues({ ...formValues, checked: e.target.checked })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault()
     setFormErrors(validate(formValues))
   }
 
-  const validate = (values) => {
+  const validate = values => {
     const errors = {}
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
 
@@ -53,7 +54,6 @@ export default function Login() {
 
   return (
     <Form handleSubmit={handleSubmit}>
-      {/* <pre>{JSON.stringify(formValues, undefined, 2)}</pre> */}
       <h1>შესვლა</h1>
       <FormField
         labelfor="ელ. ფოსტა"

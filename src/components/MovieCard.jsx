@@ -1,11 +1,17 @@
+import React from 'react'
+
+// import moviesData from '../data/MovieData/MovieData.json'
+
+import { collection, getDocs, onSnapshot } from 'firebase/firestore'
+import { db } from '../config/db'
+
 // Styles
-import { useEffect } from 'react'
-import { useState } from 'react'
 import './MovieCard.css'
+import { useEffect, useState } from 'react'
 
-import moviesData from '../data/MovieData/MovieData.json'
+export default function MovieCard() {
+  const [data, setData] = useState([])
 
-export default function MovieCard({ handleClick }) {
   function truncate(str, n) {
     return str.length > n ? str.substr(0, n - 1) + '...' : str
   }
@@ -14,14 +20,36 @@ export default function MovieCard({ handleClick }) {
     return index === items.length - 1 ? '' : ', '
   }
 
+  useEffect(() => {
+    const unsub = onSnapshot(
+      collection(db, 'movies'),
+      snapshot => {
+        let list = []
+        snapshot.docs.forEach(doc => {
+          list.push({ id: doc.id, ...doc.data() })
+        })
+        setData(list)
+      },
+      error => {
+        console.log(error)
+      }
+    )
+
+    return () => {
+      unsub()
+    }
+  }, [])
+
+  console.log(data)
+
   return (
     <>
-      {moviesData &&
-        moviesData.map((movieData, key) => {
+      {data &&
+        data.map(movieData => {
           return (
             <div className="movie--container" key={movieData.id}>
               <img
-                src={require(`../assets/images/${movieData.poster}`)}
+                src={`${movieData.poster}`}
                 className="poster"
                 alt="poster"
               />
@@ -33,40 +61,42 @@ export default function MovieCard({ handleClick }) {
                   <span className="material-symbols-outlined">play_arrow</span>
                 </a>
               </button>
-              <button className="imdb--rating">IMDB: {movieData.rating}</button>
+              <button className="imdb--rating">
+                IMDB: {movieData.movie_imdb}
+              </button>
               <div className="movie--info">
                 <h3 className="movie--title">
-                  {movieData.movieNameEN} / {movieData.movieNameGE}
+                  {movieData.movie_title_eng} / {movieData.movie_title_ge}
                 </h3>
 
                 <p className="movie--year">
-                  წელი: <span>{movieData.movieYear}</span>
+                  წელი: <span>{movieData.movie_year}</span>
                 </p>
                 <p>
-                  ქვეყანა: <span>{movieData.movieCountry}</span>
+                  ქვეყანა: <span>{movieData.movie_country}</span>
                 </p>
-                <p>
+                {/* <p>
                   ჟანრი:{' '}
                   {movieData.genre.map((movieDataGenre, index) => (
-                    <span>
+                    <span key={index}>
                       {movieDataGenre}
                       {removeLastComma(index, movieData.genre)}
                     </span>
                   ))}
-                </p>
+                </p> */}
                 <p>
                   რეჟისორი:{' '}
-                  {movieData.director.map((movieDirector, index) => (
-                    <span>
+                  {movieData.directors.map((movieDirector, index) => (
+                    <span key={index}>
                       {movieDirector}
-                      {removeLastComma(index, movieData.director)}
+                      {removeLastComma(index, movieData.directors)}
                     </span>
                   ))}
                 </p>
                 <p>
                   როლებში:{' '}
                   {movieData.actors.map((movieActor, index) => (
-                    <span>
+                    <span key={index}>
                       {movieActor}
                       {removeLastComma(index, movieData.actors)}
                     </span>
@@ -74,7 +104,7 @@ export default function MovieCard({ handleClick }) {
                 </p>
                 <p>
                   მოკლე აღწერა:{' '}
-                  <span>{truncate(movieData.description, 155)}</span>
+                  <span>{truncate(movieData.movie_subject, 155)}</span>
                 </p>
               </div>
             </div>

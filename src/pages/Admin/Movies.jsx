@@ -1,9 +1,74 @@
-import './Movies.css'
-
 import React from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
+
+import {
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  updateDoc
+} from 'firebase/firestore'
+import { db } from '../../config/db'
+
+import './Movies.css'
+import { useNavigate } from 'react-router-dom'
 
 export default function Movies({ bgColor }) {
   document.body.style.background = bgColor
+
+  const [data, setData] = useState([])
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const unsub = onSnapshot(
+      collection(db, 'movies'),
+      snapshot => {
+        let list = []
+        snapshot.docs.forEach(doc => {
+          list.push({ id: doc.id, ...doc.data() })
+        })
+        setData(list)
+      },
+      error => {
+        console.log(error)
+      }
+    )
+
+    return () => {
+      unsub()
+    }
+  }, [])
+
+  console.log(data)
+
+  const handleEdit = id => {
+    console.log(id)
+
+    const specificMovie = data.filter(movie => movie.id === id)
+    console.log(specificMovie)
+
+    navigate(`/admin/editMovie?id=${id}`)
+
+    // const moviesRef = doc(db, 'movies', id)
+
+    // // Set the "capital" field of the city 'DC'\
+
+    // await updateDoc(moviesRef, {
+    //   movie_title_ge: 'დოქტორი სტრეინჯი'
+    // })
+
+    // navigate(`/admin/addMovie?id=${id}`)
+  }
+
+  const handleDelete = async id => {
+    try {
+      await deleteDoc(doc(db, 'movies', id))
+      setData(data.filter(item => item.id !== id))
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <div>
@@ -67,28 +132,48 @@ export default function Movies({ bgColor }) {
                 <th>წელი</th>
                 <th>IMDB</th>
                 <th>IMDB Votes</th>
-                <th>ნახვები</th>
+                <th>პოსტერი</th>
+                <th>ქოვერი</th>
+                <th>Edit</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>The Batman</td>
-                <td>ბეტმენი</td>
-                <td>2022</td>
-                <td>7.9</td>
-                <td>192223</td>
-                <td>180</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Fast and furious</td>
-                <td>ფორსაჟი</td>
-                <td>2021</td>
-                <td>5.9</td>
-                <td>112223</td>
-                <td>90</td>
-              </tr>
+              {data &&
+                data.map(movie => {
+                  return (
+                    <tr key={movie.id}>
+                      <td>{movie.id}</td>
+                      <td>{movie.movie_title_eng}</td>
+                      <td>{movie.movie_title_ge}</td>
+                      <td>{movie.movie_year}</td>
+                      <td>{movie.movie_imdb}</td>
+                      <td>{movie.movie_votes}</td>
+                      <td>
+                        <img src={movie.poster} alt="poster" className="file" />
+                      </td>
+                      <td>
+                        <img src={movie.cover} alt="cover" className="file" />
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleEdit(movie.id)}
+                          className="table--btn"
+                        >
+                          Edit
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(movie.id)}
+                          className="table--btn"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  )
+                })}
             </tbody>
           </table>
         </main>

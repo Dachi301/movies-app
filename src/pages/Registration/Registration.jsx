@@ -1,3 +1,5 @@
+import React from 'react'
+
 // styles
 import './Registration.css'
 
@@ -12,18 +14,18 @@ export default function Registration() {
     surname: '',
     email: '',
     password: '',
-    repeatPassword: '',
+    repeatPassword: ''
   }
   const [formValues, setFormValues] = useState(initialValues)
   const [formErrors, setFormErrors] = useState({})
   const [isSubmit, setIsSubmit] = useState(false)
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target
     setFormValues({ ...formValues, [name]: value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault()
     setFormErrors(validate(formValues))
     setIsSubmit(true)
@@ -36,7 +38,7 @@ export default function Registration() {
     }
   }, [formErrors])
 
-  const validate = (values) => {
+  const validate = values => {
     const errors = {}
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
 

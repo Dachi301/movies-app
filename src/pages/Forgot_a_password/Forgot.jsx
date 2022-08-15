@@ -1,3 +1,5 @@
+import React from 'react'
+
 // Comps
 import Form from '../../components/Form'
 import FormField from '../../components/FormField'
@@ -12,17 +14,17 @@ export default function Forgot() {
   const [formValues, setFormValues] = useState(initialValues)
   const [formErrors, setFormErrors] = useState({})
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault()
     setFormErrors(validate(formValues))
   }
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target
     setFormValues({ ...formValues, [name]: value })
   }
 
-  const validate = (values) => {
+  const validate = values => {
     const errors = {}
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
 

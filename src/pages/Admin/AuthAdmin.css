@@ -1,0 +1,17 @@
+.auth--admin-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;  
+  gap: 20px;
+}
+
+.auth--admin-content h1 {
+  color: #fff;
+  margin-top: 80px;
+}
+
+.failed--auth-admin {
+  /* font-size: 12px; */
+  color: red;
+}

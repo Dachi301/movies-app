@@ -1,4 +1,7 @@
-import { useRef, useState } from 'react'
+import React from 'react'
+
+// import { useRef, useState } from 'react'
+
 import './FormField.css'
 
 export default function FormField({
@@ -6,7 +9,7 @@ export default function FormField({
   inputType,
   handleChange,
   fieldType,
-  textValue,
+  textValue
 }) {
   return (
     <div className="text--field" onChange={handleChange}>

@@ -1,4 +1,6 @@
 import { useRef } from 'react'
+import React from 'react'
+
 import { Link } from 'react-router-dom'
 
 // Styles
@@ -6,19 +8,23 @@ import './NavBar.css'
 
 // Comps
 import Search from './Search'
+import { useContext } from 'react'
+import { AuthContext } from '../context/AuthContext'
 
 export default function NavBar() {
   const sidebar = useRef()
 
-  const HandleHamburgerClick = (e) => {
+  const HandleHamburgerClick = e => {
     console.log(sidebar.current.style)
     sidebar.current.style.transform = 'translate3d(0%, 0, 0)'
   }
 
-  const handleCloseClick = (e) => {
+  const handleCloseClick = e => {
     sidebar.current.style.transform = 'translate3d(-100%, 0, 0)'
     console.log(e.target)
   }
+
+  const { currentUser } = useContext(AuthContext)
 
   return (
     <nav>
@@ -30,9 +36,11 @@ export default function NavBar() {
           <Link to="/contact" className="nav--item">
             კონტაქტი
           </Link>
-          <Link to="/login" className="nav--item">
-            შესვლა
-          </Link>
+          {!currentUser ? (
+            <Link to="/login" className="sidebar--link">
+              შესვლა
+            </Link>
+          ) : null}
         </div>
 
         <div className="sidebar" ref={sidebar}>
@@ -52,6 +60,7 @@ export default function NavBar() {
             <Link to="/contact" className="sidebar--link">
               კონტაქტი
             </Link>
+
             <Link to="/login" className="sidebar--link">
               შესვლა
             </Link>

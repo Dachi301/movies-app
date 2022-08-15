@@ -1,18 +1,22 @@
+import React from 'react'
 import { useEffect, useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Typed from 'typed.js'
 
 // Styles
 import './Search.css'
 
 // DATAA
+import { collection, getDocs, onSnapshot } from 'firebase/firestore'
+import { db } from '../config/db'
+
 import MoviesData from '../data/MovieData/MovieData.json'
 
 export default function Search() {
-  const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('')
+  const [data, setData] = useState([])
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setSearchTerm(e.target.value)
   }
 
@@ -21,9 +25,31 @@ export default function Search() {
       strings: ['..', '.'],
       typeSpeed: 500,
       backSpeed: 500,
-      loop: true,
+      loop: true
     })
   }, [])
+
+  useEffect(() => {
+    const unsub = onSnapshot(
+      collection(db, 'movies'),
+      snapshot => {
+        let list = []
+        snapshot.docs.forEach(doc => {
+          list.push({ id: doc.id, ...doc.data() })
+        })
+        setData(list)
+      },
+      error => {
+        console.log(error)
+      }
+    )
+
+    return () => {
+      unsub()
+    }
+  }, [])
+
+  console.log(data)
 
   return (
     <>
@@ -37,51 +63,53 @@ export default function Search() {
         <div className="movies--list">
           <hr className="search--container-line" />
 
-          {MoviesData &&
-            MoviesData.filter((movie, id) => {
-              if (!searchTerm) {
-                return ''
-              } else if (
-                movie.movieNameEN
-                  .toLowerCase()
-                  .includes(searchTerm.toLowerCase())
-              ) {
-                return movie.movieNameEN
-              } else if (
-                movie.movieNameGE
-                  .toLowerCase()
-                  .includes(searchTerm.toLowerCase())
-              ) {
-                return movie.movieNameGE
-              }
-            }).map((movie, key) => {
-              return (
-                <>
-                  <div className="movie--result" key={movie.id}>
-                    <Link to={`movie/${movie.id}`} className="movie--nav-btn">
-                      <div className="movie--container">
-                        <div className="search--container-items search--container-margin">
-                          <h3>
-                            {movie.movieNameEN} / {movie.movieNameGE}
-                          </h3>
-                          <p>{movie.movieYear}</p>
-                        </div>
+          {data &&
+            data
+              .filter(movie => {
+                if (!searchTerm) {
+                  return ''
+                } else if (
+                  movie['movie_title_eng']
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase())
+                ) {
+                  return movie['movie_title_eng']
+                } else if (
+                  movie['movie_title_ge']
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase())
+                ) {
+                  return movie['movie_title_ge']
+                }
+              })
+              .map((movie, key) => {
+                return (
+                  <React.Fragment key={key}>
+                    <div className="movie--result">
+                      <Link to={`movie/${movie.id}`} className="movie--nav-btn">
+                        <div className="movie--container">
+                          <div className="search--container-items search--container-margin">
+                            <h3>
+                              {movie.movie_title_eng} / {movie.movie_title_ge}
+                            </h3>
+                            <p>{movie.movie_year}</p>
+                          </div>
 
-                        <div className="search--container-items">
-                          <img
-                            src={require(`../assets/images/${movie.poster}`)}
-                            alt="Search_container_result_image"
-                            className="search--container-result-poster"
-                          />
+                          <div className="search--container-items">
+                            <img
+                              src={`${movie.poster}`}
+                              alt="Search_container_result_image"
+                              className="search--container-result-poster"
+                            />
+                          </div>
                         </div>
-                      </div>
-                    </Link>
+                      </Link>
 
-                    <hr className="search--container-line" />
-                  </div>
-                </>
-              )
-            })}
+                      <hr className="search--container-line" />
+                    </div>
+                  </React.Fragment>
+                )
+              })}
         </div>
 
         <h3 className="search--container-result">

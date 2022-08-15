@@ -1,6 +1,8 @@
+import React from 'react'
+
 // Styles
 import './AuthBtn.css'
 
-export default function AuthBtn({ handleClick }) {
+export default function AuthBtn() {
   return <button className="auth--btn">დადასტურება</button>
 }

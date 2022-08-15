@@ -1,39 +1,37 @@
-import React from 'react'
-
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router'
-
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
-import {
-  addDoc,
-  collection,
-  serverTimestamp,
-  getDoc,
-  doc,
-  setDoc,
-  updateDoc
-} from 'firebase/firestore'
-import { db, storage } from '../../config/db'
-import { useSearchParams } from 'react-router-dom'
-
-import './AddMovie.css'
+import React, { useState } from 'react'
+import { useEffect } from 'react'
 import { useRef } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
-export default function AddMovie({ bgColor }) {
+import { doc, getDoc, updateDoc } from 'firebase/firestore'
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
+
+import { db, storage } from '../../config/db'
+
+import './EditMovie.css'
+
+export default function EditMovie({ bgColor }) {
   document.body.style.background = bgColor
+
+  const [retrievedData, setRetrievedData] = useState([])
+  const [updatedData, setUpdatedData] = useState([])
+  const [newDirector, setNewDirector] = useState('')
+  const [newActor, setNewActor] = useState('')
+  const [actors, setActors] = useState([])
   const [poster, setPoster] = useState('')
   const [cover, setCover] = useState('')
   const [trailer, setTrailer] = useState('')
-  const [data, setData] = useState({})
-  const [newGenre, setNewGenre] = useState('')
-  const [genres, setGenres] = useState([])
-  const [newDirector, setNewDirector] = useState('')
+
   const [directors, setDirectors] = useState([])
-  const [newActor, setNewActor] = useState('')
-  const [actors, setActors] = useState([])
-  let [searchParams, setSearchParams] = useSearchParams()
+  const directorsField = useRef()
+  const actorsField = useRef()
+
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const navigate = useNavigate()
+
   let id = searchParams.get('id')
-  console.log(id)
+  // console.log(id)
 
   useEffect(() => {
     const uploadPoster = () => {
@@ -66,7 +64,7 @@ export default function AddMovie({ bgColor }) {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
-            setData(prev => ({
+            setRetrievedData(prev => ({
               ...prev,
               poster: downloadURL
             }))
@@ -106,7 +104,7 @@ export default function AddMovie({ bgColor }) {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
-            setData(prev => ({
+            setRetrievedData(prev => ({
               ...prev,
               cover: downloadURL
             }))
@@ -145,7 +143,7 @@ export default function AddMovie({ bgColor }) {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
-            setData(prev => ({
+            setRetrievedData(prev => ({
               ...prev,
               trailer: downloadURL
             }))
@@ -159,30 +157,45 @@ export default function AddMovie({ bgColor }) {
     trailer && uploadTrailer()
   }, [poster, cover, trailer])
 
-  const navigate = useNavigate()
+  const handleDirectorChange = e => {
+    setNewDirector(e.target.value)
+  }
 
-  const directorsField = useRef()
-  const actorsField = useRef()
+  const handleActorChange = e => {
+    setNewActor(e.target.value)
+  }
+
+  const handleInput = e => {
+    const { name, value } = e.target
+
+    setRetrievedData({ ...retrievedData, directors, actors, [name]: value })
+  }
 
   useEffect(() => {
-    setNewDirector(data.movie_directors)
-    setNewActor(data.movie_actors)
-  }, [data])
+    const fetchData = async () => {
+      const docRef = doc(db, 'movies', id)
+      const docSnap = await getDoc(docRef)
+
+      if (docSnap.exists()) {
+        setRetrievedData(docSnap.data())
+      } else {
+        console.log('No such document!')
+      }
+    }
+
+    return () => fetchData()
+  }, [id])
+
+  useEffect(() => {
+    setActors(retrievedData.actors)
+    setDirectors(retrievedData.directors)
+  }, [retrievedData])
 
   const addDirector = newDirector =>
     setDirectors(prevDirectors => [...prevDirectors, newDirector])
 
   const addActor = newActor =>
     setActors(prevActors => [...prevActors, newActor])
-
-  const handleInput = e => {
-    const { name, value } = e.target
-
-    setData({
-      ...data,
-      [name]: value
-    })
-  }
 
   const handleAddDirector = e => {
     e.preventDefault()
@@ -196,22 +209,25 @@ export default function AddMovie({ bgColor }) {
     actorsField.current.value = ''
   }
 
-  const handleAdd = async e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    delete data['movie_actors']
-    delete data['movie_directors']
+
+    delete retrievedData['actors']
+    delete retrievedData['directors']
+
     try {
-      const res = await addDoc(collection(db, 'movies'), {
+      const moviesRef = doc(db, 'movies', id)
+
+      // Set the "capital" field of the city 'DC'
+      await updateDoc(moviesRef, {
         actors,
         directors,
-        ...data,
-        timeStamp: serverTimestamp()
+        ...retrievedData
       })
-
-      alert('Movie has been added successfully')
+      alert('Movie has been edited successfully')
       navigate('/admin/movies')
-    } catch (e) {
-      console.log(e)
+    } catch (err) {
+      console.log(err)
     }
   }
 
@@ -248,14 +264,14 @@ export default function AddMovie({ bgColor }) {
           </li>
           <li>
             <a href="/admin/addMovie" className="active">
-              <i className="bx bxs-movie icon"></i> ფილმის დამატება
+              <i className="bx bxs-movie icon"></i> რედაქტირება
             </a>
           </li>
         </ul>
       </section>
       <section id="content">
         <main id="main--content" style={{ background: bgColor }}>
-          <h1 className="title">ფილმის დამატება</h1>
+          <h1 className="title">რედაქტირება</h1>
           <ul className="breadcrumbs">
             <li>
               <a href="#">Home</a>
@@ -268,7 +284,7 @@ export default function AddMovie({ bgColor }) {
             </li>
           </ul>
 
-          <form onSubmit={handleAdd} action="#" className="admin--form">
+          <form onSubmit={handleSubmit} action="#" className="admin--form">
             <div className="row">
               <div className="col-25">
                 <label htmlFor="fname">ფილმის სახელი (ENG)</label>
@@ -280,6 +296,7 @@ export default function AddMovie({ bgColor }) {
                   className="admin--text-field"
                   onChange={handleInput}
                   name="movie_title_eng"
+                  defaultValue={retrievedData.movie_title_eng}
                   required
                 />
               </div>
@@ -295,6 +312,7 @@ export default function AddMovie({ bgColor }) {
                   className="admin--text-field"
                   onChange={handleInput}
                   name="movie_title_ge"
+                  defaultValue={retrievedData.movie_title_ge}
                   required
                 />
               </div>
@@ -309,6 +327,7 @@ export default function AddMovie({ bgColor }) {
                   className="admin--text-field"
                   onChange={handleInput}
                   name="movie_year"
+                  defaultValue={retrievedData.movie_year}
                   required
                 />
               </div>
@@ -323,6 +342,7 @@ export default function AddMovie({ bgColor }) {
                   className="admin--text-field"
                   onChange={handleInput}
                   name="movie_country"
+                  defaultValue={retrievedData.movie_country}
                   required
                 />
               </div>
@@ -337,6 +357,7 @@ export default function AddMovie({ bgColor }) {
                   className="admin--text-field"
                   onChange={handleInput}
                   name="movie_imdb"
+                  defaultValue={retrievedData.movie_imdb}
                   required
                 />
               </div>
@@ -351,6 +372,7 @@ export default function AddMovie({ bgColor }) {
                   className="admin--text-field"
                   onChange={handleInput}
                   name="movie_votes"
+                  defaultValue={retrievedData.movie_votes}
                   required
                 />
               </div>
@@ -364,8 +386,8 @@ export default function AddMovie({ bgColor }) {
                   <input
                     type="text"
                     className="admin--text-field"
-                    onChange={handleInput}
                     name="movie_directors"
+                    onChange={handleDirectorChange}
                     ref={directorsField}
                   />
                   <button onClick={handleAddDirector} className="add--person">
@@ -374,9 +396,14 @@ export default function AddMovie({ bgColor }) {
                 </div>
                 <p className="persons--list">
                   რეჟისორები:{' '}
-                  {directors.map(director => (
+                  {/* {directors.map(director => (
                     <em key={director}>{director}, </em>
-                  ))}
+                  ))} */}
+                  {directors
+                    ? directors.map(director => (
+                        <em key={director}>{director}, </em>
+                      ))
+                    : null}
                 </p>
               </div>
             </div>
@@ -389,9 +416,9 @@ export default function AddMovie({ bgColor }) {
                   <input
                     type="text"
                     className="admin--text-field"
-                    onChange={handleInput}
                     name="movie_actors"
                     ref={actorsField}
+                    onChange={handleActorChange}
                   />
                   <button onClick={handleAddActor} className="add--person">
                     დამატება
@@ -399,9 +426,14 @@ export default function AddMovie({ bgColor }) {
                 </div>
                 <p className="persons--list">
                   მსახიობები:{' '}
-                  {actors.map(actor => (
-                    <em key={actor}>{actor}, </em>
-                  ))}
+                  {actors
+                    ? actors.map(actor => <em key={actor}>{actor}, </em>)
+                    : null}
+                  {/* {retrievedData.actors
+                    ? retrievedData.actors.map(actor => (
+                        <em key={actor}>{actor}, </em>
+                      ))
+                    : null} */}
                 </p>
               </div>
             </div>
@@ -450,13 +482,14 @@ export default function AddMovie({ bgColor }) {
                   id="subject"
                   name="movie_subject"
                   style={{ height: '200px' }}
+                  defaultValue={retrievedData.movie_subject}
                   onChange={handleInput}
                   required
                 ></textarea>
               </div>
             </div>
             <div className="row">
-              <input type="submit" value="Submit" />
+              <input type="submit" value="Update" />
             </div>
           </form>
         </main>
