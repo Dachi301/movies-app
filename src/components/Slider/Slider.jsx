@@ -4,12 +4,17 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 // Firebase
-import { collection, getDocs, onSnapshot } from 'firebase/firestore'
+import {
+  collection,
+  getDocs,
+  limit,
+  onSnapshot,
+  orderBy
+} from 'firebase/firestore'
 import { db } from '../../config/db'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
 import { Carousel } from 'react-responsive-carousel'
-
 // Components
 import images from '../../data/SliderData/dataSlider'
 

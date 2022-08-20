@@ -2,7 +2,7 @@ import React from 'react'
 
 // import moviesData from '../data/MovieData/MovieData.json'
 
-import { collection, getDocs, onSnapshot } from 'firebase/firestore'
+import { collection, getDocs, onSnapshot, orderBy } from 'firebase/firestore'
 import { db } from '../config/db'
 
 // Styles
@@ -23,6 +23,7 @@ export default function MovieCard() {
   useEffect(() => {
     const unsub = onSnapshot(
       collection(db, 'movies'),
+      orderBy('createdAt'),
       snapshot => {
         let list = []
         snapshot.docs.forEach(doc => {
@@ -101,6 +102,9 @@ export default function MovieCard() {
                       {removeLastComma(index, movieData.actors)}
                     </span>
                   ))}
+                </p>
+                <p>
+                  IMDB ხმები: <span>{movieData.movie_votes}</span>
                 </p>
                 <p>
                   მოკლე აღწერა:{' '}

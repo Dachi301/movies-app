@@ -25,8 +25,8 @@ export default function AddMovie({ bgColor }) {
   const [cover, setCover] = useState('')
   const [trailer, setTrailer] = useState('')
   const [data, setData] = useState({})
-  const [newGenre, setNewGenre] = useState('')
-  const [genres, setGenres] = useState([])
+  // const [retrievedData, setRetrievedData] = useState(null)
+  // const [updatedData, setUpdatedData] = useState([])
   const [newDirector, setNewDirector] = useState('')
   const [directors, setDirectors] = useState([])
   const [newActor, setNewActor] = useState('')
@@ -34,6 +34,26 @@ export default function AddMovie({ bgColor }) {
   let [searchParams, setSearchParams] = useSearchParams()
   let id = searchParams.get('id')
   console.log(id)
+
+  // useEffect(() => {
+  //   const fetchDoc = async () => {
+  //     try {
+  //       const docRef = doc(db, 'movies', id)
+  //       const docSnap = await getDoc(docRef)
+
+  //       if (docSnap.exists()) {
+  //         // console.log('Document data:', docSnap.data())
+  //         setRetrievedData(docSnap.data())
+  //       } else {
+  //         console.log('No such document!')
+  //       }
+  //     } catch (e) {
+  //       console.log('Error getting cached document:', e)
+  //     }
+  //   }
+
+  //   return () => fetchDoc()
+  // }, [id])
 
   useEffect(() => {
     const uploadPoster = () => {
@@ -200,12 +220,14 @@ export default function AddMovie({ bgColor }) {
     e.preventDefault()
     delete data['movie_actors']
     delete data['movie_directors']
+    const date = new Date()
+    const movieUploadTime = date.toLocaleString()
     try {
       const res = await addDoc(collection(db, 'movies'), {
         actors,
         directors,
         ...data,
-        timeStamp: serverTimestamp()
+        createdAt: movieUploadTime
       })
 
       alert('Movie has been added successfully')

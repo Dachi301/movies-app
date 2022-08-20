@@ -121,6 +121,9 @@ export default function Home() {
                         ))}
                       </p>
                       <p>
+                        IMDB ხმები: <span>{movieData.movie_votes}</span>
+                      </p>
+                      <p>
                         მოკლე აღწერა:{' '}
                         <span>{truncate(movieData.movie_subject, 155)}</span>
                       </p>
@@ -197,6 +200,9 @@ export default function Home() {
                             {removeLastComma(index, movieData.actors)}
                           </span>
                         ))}
+                      </p>
+                      <p>
+                        IMDB ხმები: <span>{movieData.movie_votes}</span>
                       </p>
                       <p>
                         მოკლე აღწერა:{' '}

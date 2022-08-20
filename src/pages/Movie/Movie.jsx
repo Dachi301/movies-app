@@ -5,7 +5,7 @@ import Plyr from 'plyr-react'
 import 'plyr-react/plyr.css'
 
 // Data
-import { doc, getDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, onSnapshot } from 'firebase/firestore'
 
 // Styles
 import './Movie.css'
@@ -28,19 +28,15 @@ export default function Movie() {
 
   // console.log(id)
   useEffect(() => {
-    const fetchData = async () => {
-      const docRef = doc(db, 'movies', id)
-      const docSnap = await getDoc(docRef)
+    const unsub = onSnapshot(doc(db, 'movies', id), doc => {
+      console.log('Current data: ', doc.data())
+      setData(doc.data())
+    })
 
-      if (docSnap.exists()) {
-        setData(docSnap.data())
-      } else {
-        console.log('No such document!')
-      }
+    return () => {
+      unsub()
     }
-
-    return () => fetchData()
-  }, [])
+  }, [id])
 
   console.log(data)
 
