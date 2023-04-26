@@ -1,6 +1,6 @@
 // Styles
-import './AuthBtn.css'
+import "./AuthBtn.css";
 
-export default function AuthBtn({ handleClick }) {
-  return <button className="auth--btn">დადასტურება</button>
+export default function AuthBtn() {
+  return <button className="auth--btn">დადასტურება</button>;
 }
