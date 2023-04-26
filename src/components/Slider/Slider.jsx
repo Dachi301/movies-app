@@ -1,23 +1,26 @@
 // styles
-import './Slider.css'
+import "./Slider.css";
 
 // fff
-import Glider from 'react-glider'
-import * as React from 'react'
-import { Link } from 'react-router-dom'
+import * as React from "react";
+import { Link } from "react-router-dom";
 
-import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
-import { Carousel } from 'react-responsive-carousel'
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
-import 'glider-js/glider.min.css'
+import "glider-js/glider.min.css";
 
 // Components
-import images from '../../data/SliderData/dataSlider'
-import { useEffect } from 'react'
+import images from "../../data/SliderData/dataSlider";
 
 export default function Slider() {
   return (
-    <Carousel autoPlay={true} infiniteLoop={true} showStatus={false}>
+    <Carousel
+      autoPlay={true}
+      infiniteLoop={true}
+      showStatus={false}
+      showThumbs={false}
+    >
       {images.map((obj, i) => {
         return (
           <div className="slider" key={obj.id}>
@@ -44,8 +47,8 @@ export default function Slider() {
               />
             </div>
           </div>
-        )
+        );
       })}
     </Carousel>
-  )
+  );
 }

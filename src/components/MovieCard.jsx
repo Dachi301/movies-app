@@ -1,23 +1,20 @@
-// Styles
-import { useEffect } from 'react'
-import { useState } from 'react'
-import './MovieCard.css'
+import "./MovieCard.css";
 
-import moviesData from '../data/MovieData/MovieData.json'
+import moviesData from "../data/MovieData/MovieData.json";
 
-export default function MovieCard({ handleClick }) {
+export default function MovieCard() {
   function truncate(str, n) {
-    return str.length > n ? str.substr(0, n - 1) + '...' : str
+    return str.length > n ? str.substr(0, n - 1) + "..." : str;
   }
 
   function removeLastComma(index, items) {
-    return index === items.length - 1 ? '' : ', '
+    return index === items.length - 1 ? "" : ", ";
   }
 
   return (
     <>
       {moviesData &&
-        moviesData.map((movieData, key) => {
+        moviesData.map((movieData) => {
           return (
             <div className="movie--container" key={movieData.id}>
               <img
@@ -46,40 +43,40 @@ export default function MovieCard({ handleClick }) {
                   ქვეყანა: <span>{movieData.movieCountry}</span>
                 </p>
                 <p>
-                  ჟანრი:{' '}
+                  ჟანრი:{" "}
                   {movieData.genre.map((movieDataGenre, index) => (
-                    <span>
+                    <span key={index}>
                       {movieDataGenre}
                       {removeLastComma(index, movieData.genre)}
                     </span>
                   ))}
                 </p>
                 <p>
-                  რეჟისორი:{' '}
+                  რეჟისორი:{" "}
                   {movieData.director.map((movieDirector, index) => (
-                    <span>
+                    <span key={index}>
                       {movieDirector}
                       {removeLastComma(index, movieData.director)}
                     </span>
                   ))}
                 </p>
                 <p>
-                  როლებში:{' '}
+                  როლებში:{" "}
                   {movieData.actors.map((movieActor, index) => (
-                    <span>
+                    <span key={index}>
                       {movieActor}
                       {removeLastComma(index, movieData.actors)}
                     </span>
                   ))}
                 </p>
                 <p>
-                  მოკლე აღწერა:{' '}
+                  მოკლე აღწერა:{" "}
                   <span>{truncate(movieData.description, 155)}</span>
                 </p>
               </div>
             </div>
-          )
+          );
         })}
     </>
-  )
+  );
 }

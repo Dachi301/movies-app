@@ -1,57 +1,52 @@
 // Styles
-import './Movie.css'
+import "./Movie.css";
 
 // React
-import React from 'react'
-import Plyr from 'plyr-react'
-import 'plyr-react/plyr.css'
+import React from "react";
+import Plyr from "plyr-react";
+import "plyr-react/plyr.css";
 
 // Data
-import MoviesData from '../../data/MovieData/MovieData.json'
+import MoviesData from "../../data/MovieData/MovieData.json";
 
-import { useParams } from 'react-router-dom'
+import { useParams } from "react-router-dom";
 
 export default function Movie() {
-  let { id } = useParams()
-  const url = `http://localhost:3000/movie/${id}`
-  id = Number(id)
-  const movie = MoviesData.filter((movie, i) => movie.id === id)
-  console.log(movie[0])
-
-  function truncate(str, n) {
-    return str.length > n ? str.substr(0, n - 1) + '...' : str
-  }
+  let { id } = useParams();
+  id = Number(id);
+  const movie = MoviesData.filter((movie, i) => movie.id === id);
+  console.log(movie[0]);
 
   function removeLastComma(index, items) {
-    return index === items.length - 1 ? '' : ', '
+    return index === items.length - 1 ? "" : ", ";
   }
 
   const videoSrc = {
-    type: 'video',
+    type: "video",
 
     sources: [
       {
-        src: require('../../assets/trailers/doctor_strange_trailer.mp4'),
-        type: 'video/mp4',
+        src: require("../../assets/trailers/doctor_strange_trailer.mp4"),
+        type: "video/mp4",
       },
     ],
     poster: require(`../../assets/images/${movie[0].cover}`),
     tracks: [
       {
-        kind: 'captions',
-        label: 'English',
-        srclang: 'en',
-        src: '/path/to/captions.en.vtt',
+        kind: "captions",
+        label: "English",
+        srclang: "en",
+        src: "/path/to/captions.en.vtt",
         default: true,
       },
       {
-        kind: 'captions',
-        label: 'French',
-        srclang: 'fr',
-        src: '/path/to/captions.fr.vtt',
+        kind: "captions",
+        label: "French",
+        srclang: "fr",
+        src: "/path/to/captions.fr.vtt",
       },
     ],
-  }
+  };
 
   return (
     <>
@@ -91,7 +86,7 @@ export default function Movie() {
                           ქვეყანა: <span>{movieData.movieCountry}</span>
                         </p>
                         <p>
-                          ჟანრი:{' '}
+                          ჟანრი:{" "}
                           {movieData.genre.map((movieDataGenre, index) => (
                             <span>
                               {movieDataGenre}
@@ -100,7 +95,7 @@ export default function Movie() {
                           ))}
                         </p>
                         <p>
-                          რეჟისორი:{' '}
+                          რეჟისორი:{" "}
                           {movieData.director.map((movieDirector, index) => (
                             <span>
                               {movieDirector}
@@ -109,7 +104,7 @@ export default function Movie() {
                           ))}
                         </p>
                         <p>
-                          როლებში:{' '}
+                          როლებში:{" "}
                           {movieData.actors.map((movieActor, index) => (
                             <span>
                               {movieActor}
@@ -146,5 +141,5 @@ export default function Movie() {
           )
         )}
     </>
-  )
+  );
 }

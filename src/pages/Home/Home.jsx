@@ -1,11 +1,9 @@
 // Styles
-import './Home.css'
+import "./Home.css";
 // Components
-import React from 'react'
-import Footer from '../../components/Footer'
-import MoviesList from '../../components/MoviesList'
-import NavBar from '../../components/NavBar'
-import Slider from '../../components/Slider/Slider'
+import React from "react";
+import MoviesList from "../../components/MoviesList";
+import Slider from "../../components/Slider/Slider";
 
 export default function Home({ funcNav }) {
   return (
@@ -28,9 +26,9 @@ export default function Home({ funcNav }) {
         </div> */}
       </div>
 
-      <MoviesList title={'ახალი დამატებული ფილმები'} />
-      <MoviesList title={'პუპულარული ფილმები'} />
-      <MoviesList title={'ტრეილერები'} />
+      <MoviesList title={"ახალი დამატებული ფილმები"} />
+      <MoviesList title={"პუპულარული ფილმები"} />
+      <MoviesList title={"ტრეილერები"} />
     </>
-  )
+  );
 }

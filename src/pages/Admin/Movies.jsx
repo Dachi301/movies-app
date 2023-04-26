@@ -1,45 +1,46 @@
-import './Movies.css'
+import { Link } from "react-router-dom";
+import "./Movies.css";
 
-import React from 'react'
+import React from "react";
 
 export default function Movies({ bgColor }) {
-  document.body.style.background = bgColor
+  document.body.style.background = bgColor;
 
   return (
     <div>
       <section id="sidebar">
-        <a href="/admin" className="brand">
+        <Link to="/admin" className="brand">
           <i className="bx bxs-user icon"></i> ადმინი
-        </a>
+        </Link>
         <ul className="side-menu">
           <li>
-            <a href="/admin">
+            <Link to="/admin">
               <i className="bx bxs-home icon"></i> მთავარი
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#">
+            <Link to="#">
               <i className="bx bxs-message icon"></i> შეტყობინებები
-            </a>
+            </Link>
           </li>
 
           <li className="divider" data-text="ფილმები და მომხმარებლები">
             ფილმები და მომხმარებლები
           </li>
           <li>
-            <a href="/admin/users">
+            <Link to="/admin/users">
               <i className="bx bxs-user icon"></i> მომხმარებლები
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/admin/movies" className="active">
+            <Link to="/admin/movies" className="active">
               <i className="bx bxs-movie icon"></i> ფილმები
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/admin/addMovie">
+            <Link to="/admin/addMovie">
               <i className="bx bxs-movie icon"></i> ფილმის დამატება
-            </a>
+            </Link>
           </li>
         </ul>
       </section>
@@ -48,13 +49,13 @@ export default function Movies({ bgColor }) {
           <h1 className="title">ფილმები</h1>
           <ul className="breadcrumbs">
             <li>
-              <a href="#">Home</a>
+              <Link to="#">Home</Link>
             </li>
             <li className="divider">/</li>
             <li>
-              <a href="#" className="active">
+              <Link to="#" className="active">
                 Dashboard
-              </a>
+              </Link>
             </li>
           </ul>
 
@@ -94,5 +95,5 @@ export default function Movies({ bgColor }) {
         </main>
       </section>
     </div>
-  )
+  );
 }

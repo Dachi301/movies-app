@@ -1,43 +1,45 @@
-import './AddMovie.css'
+import "./AddMovie.css";
+
+import { Link } from "react-router-dom";
 
 export default function AddMovie({ bgColor }) {
-  document.body.style.background = bgColor
+  document.body.style.background = bgColor;
 
   return (
     <div>
       <section id="sidebar">
-        <a href="/admin" className="brand">
+        <Link to={"/admin"}>
           <i className="bx bxs-user icon"></i> ადმინი
-        </a>
+        </Link>
         <ul className="side-menu">
           <li>
-            <a href="/admin">
+            <Link to="/admin">
               <i className="bx bxs-home icon"></i> მთავარი
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#">
+            <Link to="#">
               <i className="bx bxs-message icon"></i> შეტყობინებები
-            </a>
+            </Link>
           </li>
 
           <li className="divider" data-text="ფილმები და მომხმარებლები">
             ფილმები და მომხმარებლები
           </li>
           <li>
-            <a href="/admin/users">
+            <Link to="/admin/users">
               <i className="bx bxs-user icon"></i> მომხმარებლები
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/admin/movies">
+            <Link to="/admin/movies">
               <i className="bx bxs-movie icon"></i> ფილმები
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/admin/addMovie" className="active">
+            <Link to="/admin/addMovie" className="active">
               <i className="bx bxs-movie icon"></i> ფილმის დამატება
-            </a>
+            </Link>
           </li>
         </ul>
       </section>
@@ -46,13 +48,13 @@ export default function AddMovie({ bgColor }) {
           <h1 className="title">ფილმის დამატება</h1>
           <ul className="breadcrumbs">
             <li>
-              <a href="#">Home</a>
+              <Link to="#">Home</Link>
             </li>
             <li className="divider">/</li>
             <li>
-              <a href="#" className="active">
+              <Link to="#" className="active">
                 Dashboard
-              </a>
+              </Link>
             </li>
           </ul>
 
@@ -171,7 +173,7 @@ export default function AddMovie({ bgColor }) {
                 <textarea
                   id="subject"
                   name="subject"
-                  style={{ height: '200px' }}
+                  style={{ height: "200px" }}
                 ></textarea>
               </div>
             </div>
@@ -182,5 +184,5 @@ export default function AddMovie({ bgColor }) {
         </main>
       </section>
     </div>
-  )
+  );
 }

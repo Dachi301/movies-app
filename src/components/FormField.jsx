@@ -1,5 +1,4 @@
-import { useRef, useState } from 'react'
-import './FormField.css'
+import "./FormField.css";
 
 export default function FormField({
   labelfor,
@@ -21,5 +20,5 @@ export default function FormField({
         defaultValue={textValue}
       />
     </div>
-  )
+  );
 }

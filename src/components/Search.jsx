@@ -1,29 +1,18 @@
-import { useEffect, useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import Typed from 'typed.js'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 // Styles
-import './Search.css'
+import "./Search.css";
 
 // DATAA
-import MoviesData from '../data/MovieData/MovieData.json'
+import MoviesData from "../data/MovieData/MovieData.json";
 
 export default function Search() {
-  const navigate = useNavigate()
-  const [searchTerm, setSearchTerm] = useState('')
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleChange = (e) => {
-    setSearchTerm(e.target.value)
-  }
-
-  useEffect(() => {
-    const typed = new Typed('.auto-type', {
-      strings: ['..', '.'],
-      typeSpeed: 500,
-      backSpeed: 500,
-      loop: true,
-    })
-  }, [])
+    setSearchTerm(e.target.value);
+  };
 
   return (
     <>
@@ -38,25 +27,27 @@ export default function Search() {
           <hr className="search--container-line" />
 
           {MoviesData &&
-            MoviesData.filter((movie, id) => {
+            MoviesData.filter((movie) => {
               if (!searchTerm) {
-                return ''
+                return true;
               } else if (
                 movie.movieNameEN
                   .toLowerCase()
                   .includes(searchTerm.toLowerCase())
               ) {
-                return movie.movieNameEN
+                return true;
               } else if (
                 movie.movieNameGE
                   .toLowerCase()
                   .includes(searchTerm.toLowerCase())
               ) {
-                return movie.movieNameGE
+                return true;
+              } else {
+                return false;
               }
-            }).map((movie, key) => {
+            }).map((movie, id) => {
               return (
-                <>
+                <React.Fragment key={movie.id}>
                   <div className="movie--result" key={movie.id}>
                     <Link to={`movie/${movie.id}`} className="movie--nav-btn">
                       <div className="movie--container">
@@ -79,8 +70,8 @@ export default function Search() {
 
                     <hr className="search--container-line" />
                   </div>
-                </>
-              )
+                </React.Fragment>
+              );
             })}
         </div>
 
@@ -89,5 +80,5 @@ export default function Search() {
         </h3>
       </div>
     </>
-  )
+  );
 }

@@ -1,24 +1,19 @@
-import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 // Styles
-import './NavBar.css'
+import "./NavBar.css";
 
 // Comps
-import Search from './Search'
+import Search from "./Search";
 
 export default function NavBar() {
-  const sidebar = useRef()
-
-  const HandleHamburgerClick = (e) => {
-    console.log(sidebar.current.style)
-    sidebar.current.style.transform = 'translate3d(0%, 0, 0)'
-  }
+  const sidebar = useRef();
 
   const handleCloseClick = (e) => {
-    sidebar.current.style.transform = 'translate3d(-100%, 0, 0)'
-    console.log(e.target)
-  }
+    sidebar.current.style.transform = "translate3d(-100%, 0, 0)";
+    console.log(e.target);
+  };
 
   return (
     <nav>
@@ -61,5 +56,5 @@ export default function NavBar() {
         <Search />
       </ul>
     </nav>
-  )
+  );
 }

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 // styles
-import './Footer.css'
-
-var ReactDOM = require('react-dom')
+import "./Footer.css";
 
 export default function Footer() {
   return (
@@ -11,7 +9,7 @@ export default function Footer() {
       <div>
         <h2>Copyright &copy; 2022 Movies App</h2>
         <p className="author">
-          Created by{' '}
+          Created by{" "}
           <a
             target="_blank"
             href="https://github.com/Dachi301"
@@ -42,5 +40,5 @@ export default function Footer() {
         </svg>
       </div>
     </footer>
-  )
+  );
 }
