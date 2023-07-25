@@ -29,7 +29,7 @@ export default function Search() {
           {MoviesData &&
             MoviesData.filter((movie) => {
               if (!searchTerm) {
-                return true;
+                return;
               } else if (
                 movie.movieNameEN
                   .toLowerCase()
@@ -45,7 +45,7 @@ export default function Search() {
               } else {
                 return false;
               }
-            }).map((movie, id) => {
+            }).map((movie) => {
               return (
                 <React.Fragment key={movie.id}>
                   <div className="movie--result" key={movie.id}>

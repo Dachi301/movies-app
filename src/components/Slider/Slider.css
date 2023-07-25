@@ -120,6 +120,37 @@
   font-size: 4vw;
   letter-spacing: 3px;
 }
+
+@media screen and (max-width: 600px) {
+  .slider .text--content {
+    position: absolute;
+    bottom: 10%;
+    left: 3%;
+  }
+
+  .rating--content .watch--now-btn {
+    font-size: 12px;
+    padding: 12px;
+  }
+
+  .text--content .rating--content .movie--rating {
+    font-size: 14px;
+    color: #e4e4e4;
+  }
+
+  .text--content .movie--imdb-icon {
+    font-size: 36px;
+    padding-left: 0;
+    color: #f5c518;
+  }
+
+  .text--content .movie--title {
+    font-size: 4vw;
+    letter-spacing: 2px;
+  }
+}
+
+
 /* 
 .movie--image-content {
   max-width: 100%;

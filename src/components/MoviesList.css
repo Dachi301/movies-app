@@ -1,14 +1,16 @@
 .movies--content {
-  width: 1700px;
-  margin: 0 auto;
+  /* width: 1700px; */
+  /* margin: 0 auto; */
   color: #e4e4e4;
   margin-bottom: 40px;
   position: relative;
+  padding: 0 20px;
 }
 
 .movies--containers {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-items: center;
 }
 
 .movie--container {
@@ -17,6 +19,7 @@
 
 .section--title {
   margin-bottom: 20px;
+  padding-left: 30px;
 }
 
 .movies--containers :nth-child(6) .movie--info {
@@ -30,6 +33,108 @@
   top: 0;
   left: -114%;
 }
+
+@media screen and (max-width: 1450px) {
+  .movies--containers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 20px;
+
+  }
+}
+
+
+@media screen and (max-width: 1210px) {
+  .movies--containers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 20px;
+
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .movies--containers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 20px;
+
+  }
+
+  .section--title {
+ text-align: center;
+
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .movies--containers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 20px;
+
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .section--title {
+    font-size: 22px;
+   
+     }
+}
+
+@media screen and (max-width: 490px) {
+  .movies--containers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 20px;
+
+  }
+  .section--title {
+    font-size: 18px;
+   
+     }
+
+
+     .movies--content {
+      /* width: 1700px; */
+      /* margin: 0 auto; */
+      color: #e4e4e4;
+      margin-bottom: 40px;
+      position: relative;
+      padding: 0;
+    }
+    
+}
+
+@media screen and (max-width: 440px) {
+  .movies--containers {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+
+  }
+  .section--title {
+    font-size: 18px;
+   
+     }
+
+
+     .movies--content {
+      /* width: 1700px; */
+      /* margin: 0 auto; */
+      color: #e4e4e4;
+      margin-bottom: 40px;
+      position: relative;
+      padding: 5px;
+    }
+    
+}
+
+
+
+
+
 
 /* .movie--container .poster {
   width: 213px;
