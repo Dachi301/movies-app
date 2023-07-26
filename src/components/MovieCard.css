@@ -116,10 +116,10 @@
 }
 
 @media screen and (max-width: 1725px) {
-  .movie--info {
+  /* .movie--info {
     width: 16rem;
     height: 19rem;
-  }
+  } */
 }
 
 @media screen and (max-width: 1500px) {
