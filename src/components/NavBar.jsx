@@ -11,15 +11,18 @@ export default function NavBar() {
   const sidebar = useRef();
 
   const handleCloseClick = (e) => {
-    sidebar.current.style.transform = "translate3d(-100%, 0, 0)";
-    console.log(e.target);
+    sidebar.current.style.transform = "translate3d(-100%, 0.5%, 0)";
   };
 
+  const handleOpenSidebar = () => {
+    sidebar.current.style.transform = "translate3d(0, 0.5%, 0)"
+  } 
+
   return (
-    <nav>
+    <nav style={{position: 'relative'}}>
       <ul>
         <div className="links">
-        <span id="hamburger-icon" class="material-symbols-outlined">menu</span>
+        <span id="hamburger-icon" class="material-symbols-outlined" onClick={handleOpenSidebar}>menu</span>
           <Link to="/" className="nav--item">
             მთავარი
           </Link>
@@ -41,14 +44,14 @@ export default function NavBar() {
           </span>
 
           <div className="wrap--nav-items">
-            <Link to="/" className="sidebar--link">
+            <Link to="/" className="sidebar--link" style={{color: 'black'}}>
               მთავარი
             </Link>
 
-            <Link to="/contact" className="sidebar--link">
+            <Link to="/contact" className="sidebar--link" style={{color: 'black'}}>
               კონტაქტი
             </Link>
-            <Link to="/login" className="sidebar--link">
+            <Link to="/login" className="sidebar--link" style={{color: 'black'}}>
               შესვლა
             </Link>
           </div>

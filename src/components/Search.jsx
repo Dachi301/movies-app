@@ -15,7 +15,7 @@ export default function Search() {
   };
 
   return (
-    <>
+    <div style={{position: 'relative'}}>
       <input
         type="text"
         className="search--field icon-rtl"
@@ -79,6 +79,6 @@ export default function Search() {
           ძიება<span className="auto-type">...</span>
         </h3>
       </div>
-    </>
+    </div>
   );
 }
