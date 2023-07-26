@@ -19,7 +19,7 @@ export default function NavBar() {
   } 
 
   return (
-    <nav>
+    <nav style={{position: 'relative'}}>
       <ul>
         <div className="links">
         <span id="hamburger-icon" class="material-symbols-outlined" onClick={handleOpenSidebar}>menu</span>

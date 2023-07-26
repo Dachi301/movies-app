@@ -30,8 +30,8 @@
 
 .navbar .search--container {
   position: absolute;
-  top: 2.5%;
-  right: 1%;
+  top: 130%;
+  right: -10%;
   background-color: #1a1f38;
   color: #fff;
   width: 400px;
@@ -99,4 +99,10 @@
 .error p {
   text-align: center;
   padding: 20px;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar .search--container {
+    width: 250px;
+  }
 }
