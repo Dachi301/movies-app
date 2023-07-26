@@ -88,7 +88,7 @@ export default function Movie() {
                         <p>
                           ჟანრი:{" "}
                           {movieData.genre.map((movieDataGenre, index) => (
-                            <span>
+                            <span key={index}>
                               {movieDataGenre}
                               {removeLastComma(index, movieData.genre)}
                             </span>
@@ -97,7 +97,7 @@ export default function Movie() {
                         <p>
                           რეჟისორი:{" "}
                           {movieData.director.map((movieDirector, index) => (
-                            <span>
+                            <span key={index}>
                               {movieDirector}
                               {removeLastComma(index, movieData.director)}
                             </span>
@@ -106,7 +106,7 @@ export default function Movie() {
                         <p>
                           როლებში:{" "}
                           {movieData.actors.map((movieActor, index) => (
-                            <span>
+                            <span key={index}>
                               {movieActor}
                               {removeLastComma(index, movieData.actors)}
                             </span>
