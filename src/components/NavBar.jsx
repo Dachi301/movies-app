@@ -22,7 +22,7 @@ export default function NavBar() {
     <nav style={{position: 'relative'}}>
       <ul>
         <div className="links">
-        <span id="hamburger-icon" class="material-symbols-outlined" onClick={handleOpenSidebar}>menu</span>
+        <span id="hamburger-icon" className="material-symbols-outlined" onClick={handleOpenSidebar}>menu</span>
           <Link to="/" className="nav--item">
             მთავარი
           </Link>
