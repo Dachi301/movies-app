@@ -19,6 +19,7 @@ export default function NavBar() {
     <nav>
       <ul>
         <div className="links">
+        <span id="hamburger-icon" class="material-symbols-outlined">menu</span>
           <Link to="/" className="nav--item">
             მთავარი
           </Link>

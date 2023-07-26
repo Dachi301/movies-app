@@ -21,7 +21,7 @@ export default function Slider() {
       showStatus={false}
       showThumbs={false}
     >
-      {images.map((obj, i) => {
+      {images.map((obj) => {
         return (
           <div className="slider" key={obj.id}>
             <div key={obj.id} className="slide">
