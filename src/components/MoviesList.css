@@ -25,13 +25,13 @@
 .movies--containers :nth-child(6) .movie--info {
   position: absolute;
   top: 0;
-  left: 80%;
+  left: -162%;
 }
 
 .movies--containers :nth-child(12) .movie--info {
   position: absolute;
   top: 0;
-  left: -114%;
+  left: -154%;
 }
 
 @media screen and (max-width: 1450px) {
@@ -40,6 +40,12 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     row-gap: 20px;
 
+  }
+
+  .movies--containers :nth-child(6) .movie--info {
+    position: absolute;
+    top: 0;
+    left: 65%;
   }
 }
 
