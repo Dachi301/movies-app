@@ -122,6 +122,20 @@
   }
 }
 
+@media screen and (max-width: 1500px) {
+  .movies--containers :nth-child(5) .movie--info {
+    position: absolute;
+    top: 0;
+    left: -123%;
+  }
+
+  .movies--containers :nth-child(6) .movie--info {
+    position: absolute;
+    top: 0;
+    left: 20%;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   /* .movie--container .poster {
     width: 40vh;
@@ -136,11 +150,11 @@
     display: none;
   }
 
-  .movie--container .poster-watch--btn {
+  /* .movie--container .poster-watch--btn {
     position: absolute;
     top: 7rem;
     left: 4.5rem;
-  }
+  } */
 }
 
 /* @media screen and (max-width: 768px) {

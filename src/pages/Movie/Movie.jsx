@@ -14,7 +14,7 @@ import { useParams } from "react-router-dom";
 export default function Movie() {
   let { id } = useParams();
   id = Number(id);
-  const movie = MoviesData.filter((movie, i) => movie.id === id);
+  const movie = MoviesData.filter((movie) => movie.id === id);
   console.log(movie[0]);
 
   function removeLastComma(index, items) {

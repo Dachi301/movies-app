@@ -25,7 +25,7 @@
 .movies--containers :nth-child(6) .movie--info {
   position: absolute;
   top: 0;
-  left: -123%;
+  left: 80%;
 }
 
 .movies--containers :nth-child(12) .movie--info {
@@ -91,7 +91,7 @@
 
   }
   .section--title {
-    font-size: 18px;
+    font-size: 22px;
    
      }
 
@@ -115,7 +115,7 @@
 
   }
   .section--title {
-    font-size: 18px;
+    font-size: 20px;
    
      }
 
@@ -124,9 +124,9 @@
       /* width: 1700px; */
       /* margin: 0 auto; */
       color: #e4e4e4;
-      margin-bottom: 40px;
-      position: relative;
-      padding: 5px;
+      /* margin-bottom: 40px; */
+      /* position: relative; */
+      /* padding: 5px; */
     }
     
 }

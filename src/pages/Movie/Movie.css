@@ -7,8 +7,7 @@
 }
 
 .movie--page {
-  width: 1800px;
-  margin: 0 auto;
+  padding: 0 40px;
 }
 
 .bg {
@@ -21,6 +20,8 @@
   justify-content: center;
   margin-bottom: 40px;
   cursor: pointer;
+  width: 100%;
+
 }
 
 .movie--player-content input {
@@ -81,6 +82,7 @@
   margin-bottom: 20px;
   color: #fff;
   border-bottom: 1px solid rgb(26, 144, 207);
+  font-size: 26px;
 }
 
 /* ბექგრაუნდიიიიიი */
@@ -116,4 +118,38 @@
 
 video {
   outline: none;
+}
+
+@media screen and (max-width: 1500px) {
+  .movie--page-title {
+    font-size: 18px;
+  }
+
+  .movie--details-content {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .movie--page-poster {
+    width: 100%;
+    border-radius: 10px;
+    background: url('../../assets/images/doctor_strange.jpg');
+  }
+
+  .movie--details-container {
+    width: 100%;
+  }
+  
+}
+
+@media screen and (max-width: 700px) {
+  .movie--page-title {
+    font-size: 15px;
+  }
+
+
+  
 }
