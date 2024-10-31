@@ -99,7 +99,7 @@ export default function Admin({ bgColor }) {
                   <h2>235</h2>
                   <p>Visitors</p>
                 </div>
-                <i class="bx bx-trending-down red"></i>
+                <i className="bx bx-trending-down red"></i>
               </div>
               <span className="progress" data-value="80%"></span>
               <span className="label">80%</span>

@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/static/css/main.69778774.css",
+    "main.js": "/static/js/main.52afd503.js",
+    "static/media/doctor_strange_trailer.mp4": "/static/media/doctor_strange_trailer.fea6ec5e296871ebd04f.mp4",
+    "static/media/The_batman.jpg": "/static/media/The_batman.44a6dfbd342ba79be5ff.jpg",
+    "static/media/doctor_strange.jpg": "/static/media/doctor_strange.967a93c4802a7160dbc1.jpg",
+    "static/media/dog_poster.jpg": "/static/media/dog_poster.dc8269c56c5498ec020a.jpg",
+    "static/media/uncharted.jpg": "/static/media/uncharted.2e167cefc6afc2e0c666.jpg",
+    "static/media/scream_5_poster.jpg": "/static/media/scream_5_poster.cd9f01f5ab7607f7b77d.jpg",
+    "static/media/sonic_2.jpg": "/static/media/sonic_2.30f1afcfc9ae3d8277a2.jpg",
+    "static/media/sonic_2_poster.jpg": "/static/media/sonic_2_poster.cf29a4b66aebc1a20456.jpg",
+    "static/media/halloween_kills_poster.jpg": "/static/media/halloween_kills_poster.32ebb14baf0e391ec17e.jpg",
+    "static/media/bg.jpg": "/static/media/bg.f326fb063364d365c72f.jpg",
+    "static/media/doctor_strange_poster.jpg": "/static/media/doctor_strange_poster.b79f6e0bae487516a005.jpg",
+    "static/media/uncharted_poster.jpg": "/static/media/uncharted_poster.5921d8ae34c86f936a14.jpg",
+    "static/media/batman_poster.jpg": "/static/media/batman_poster.34090cf96a60f5995e20.jpg",
+    "static/media/marry_me_poster.jpg": "/static/media/marry_me_poster.7fc2a115f51df15a567d.jpg",
+    "static/media/a_castle_for_christmas_poster.jpg": "/static/media/a_castle_for_christmas_poster.f1d356ff4801c71f4c3f.jpg",
+    "static/media/doctor_strange_posterrr.jpg": "/static/media/doctor_strange_posterrr.dea47b61de9ac17c8be1.jpg",
+    "static/media/bpg_nino_mtavruli_bold.ttf": "/static/media/bpg_nino_mtavruli_bold.43eacc71b8fa4cfe138c.ttf",
+    "static/media/black_box_poster.jpg": "/static/media/black_box_poster.a94924c6700567a38eb7.jpg",
+    "static/media/scream_poster.webp": "/static/media/scream_poster.047b852b56a2a18a93dc.webp",
+    "static/media/candyman_poster.webp": "/static/media/candyman_poster.da3cae29df982270b73d.webp",
+    "static/media/ambulance_poster.jpg": "/static/media/ambulance_poster.250ea0baec732483e781.jpg",
+    "static/media/adam_poster.jpg": "/static/media/adam_poster.0526f457aa3cd34c222b.jpg",
+    "static/media/being_the_ricardos_poster.jpg": "/static/media/being_the_ricardos_poster.dde02a23a4088e46f2ff.jpg",
+    "static/media/banishing_poster.jpg": "/static/media/banishing_poster.78b1d9e5165970c7cbdd.jpg",
+    "static/media/accursed_poster.jpg": "/static/media/accursed_poster.9dde80fc9d936615b866.jpg",
+    "index.html": "/index.html",
+    "static/media/search_iconn.svg": "/static/media/search_iconn.bcdc61f4ae9fd8bd1d2b.svg",
+    "main.69778774.css.map": "/static/css/main.69778774.css.map",
+    "main.52afd503.js.map": "/static/js/main.52afd503.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.69778774.css",
+    "static/js/main.52afd503.js"
+  ]
+}
