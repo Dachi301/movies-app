@@ -29,7 +29,7 @@ export default function Search() {
           {MoviesData &&
             MoviesData.filter((movie) => {
               if (!searchTerm) {
-                return;
+                return '';
               } else if (
                 movie.movieNameEN
                   .toLowerCase()
