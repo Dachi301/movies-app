@@ -30,9 +30,9 @@ export default function Slider() {
                   {obj.movie} ({obj.year})
                 </h1>
                 <div className="rating--content">
-                  <a href={obj.imdbPage} target="_blank" rel="noreferrer">
+                  <Link to={obj.imdbPage} target="_blank" rel="noreferrer">
                     <i className="fa fa-imdb movie--imdb-icon"></i>
-                  </a>
+                  </Link>
 
                   <span className="movie--rating">{obj.rating}</span>
                   <Link to={`/movie/${obj.id}`}>

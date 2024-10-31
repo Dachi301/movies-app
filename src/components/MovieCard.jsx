@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "./MovieCard.css";
 
 import moviesData from "../data/MovieData/MovieData.json";
@@ -23,12 +25,12 @@ export default function MovieCard({title}) {
                       alt="poster"
                   />
                   <button className="poster-watch--btn">
-                    <a
+                    <Link
                         className="play--btn-homepage"
-                        href={`/movie/${movieData.id}`}
+                        to={`/movie/${movieData.id}`}
                     >
                       <span className="material-symbols-outlined">play_arrow</span>
-                    </a>
+                    </Link>
                   </button>
                   <button className="imdb--rating">IMDB: {movieData.rating}</button>
                   <div className="movie--info">
@@ -87,12 +89,12 @@ export default function MovieCard({title}) {
                       alt="poster"
                   />
                   <button className="poster-watch--btn">
-                    <a
+                    <Link
                         className="play--btn-homepage"
-                        href={`/movie/${movieData.id}`}
+                        to={`/movie/${movieData.id}`}
                     >
                       <span className="material-symbols-outlined">play_arrow</span>
-                    </a>
+                    </Link>
                   </button>
                   <button className="imdb--rating">IMDB: {movieData.rating}</button>
                   <div className="movie--info">
