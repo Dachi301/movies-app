@@ -8,7 +8,7 @@ export default function MoviesList({ title }) {
       <h1 className="section--title">{title}</h1>
 
       <div className="movies--containers">
-        <MovieCard />
+        <MovieCard title={title} />
       </div>
     </div>
   );

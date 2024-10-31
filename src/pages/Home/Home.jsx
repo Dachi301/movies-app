@@ -13,8 +13,8 @@ export default function Home({ funcNav }) {
       </div>
 
       <MoviesList title={"ახალი დამატებული ფილმები"} />
-      <MoviesList title={"პუპულარული ფილმები"} />
-      <MoviesList title={"ტრეილერები"} />
+      <MoviesList title={"პოპულარული ფილმები"} />
+      {/*<MoviesList title={"ტრეილერები"} />*/}
     </>
   );
 }
