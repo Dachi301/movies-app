@@ -25,7 +25,7 @@ export default function MovieCard({title}) {
                   <button className="poster-watch--btn">
                     <a
                         className="play--btn-homepage"
-                        href={`http://localhost:3000/movie/${movieData.id}`}
+                        href={`/movie/${movieData.id}`}
                     >
                       <span className="material-symbols-outlined">play_arrow</span>
                     </a>
@@ -89,7 +89,7 @@ export default function MovieCard({title}) {
                   <button className="poster-watch--btn">
                     <a
                         className="play--btn-homepage"
-                        href={`http://localhost:3000/movie/${movieData.id}`}
+                        href={`/movie/${movieData.id}`}
                     >
                       <span className="material-symbols-outlined">play_arrow</span>
                     </a>

@@ -125,20 +125,6 @@ video {
     font-size: 18px;
   }
 
-  .movie--details-content {
-    display: flex;
-    /* justify-content: space-between; */
-    align-items: center;
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  .movie--page-poster {
-    width: 100%;
-    border-radius: 10px;
-    background: url('../../assets/images/doctor_strange.jpg');
-  }
-
   .movie--details-container {
     width: 100%;
   }
@@ -149,7 +135,20 @@ video {
   .movie--page-title {
     font-size: 15px;
   }
+}
 
+@media screen and (max-width: 1200px) {
+  .movie--details-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+  }
 
-  
+  .movie--page-poster {
+    width: 100%;
+    border-radius: 10px;
+    background: url('../../assets/images/doctor_strange.jpg');
+  }
 }
