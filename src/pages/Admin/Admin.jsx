@@ -1,3 +1,5 @@
+import { useLocation } from 'react-router-dom';
+
 // Styles
 import "./Admin.css";
 

@@ -32,9 +32,9 @@ export default function NavBar() {
           <Link to="/login" className="nav--item">
             შესვლა
           </Link>
-          <Link to="/admin" className="nav--item">
-            ადმინკა
-          </Link>
+          {/*<Link to="/admin" className="nav--item">*/}
+          {/*  ადმინკა*/}
+          {/*</Link>*/}
         </div>
 
         <div className="sidebar" ref={sidebar}>
@@ -57,9 +57,9 @@ export default function NavBar() {
             <Link to="/login" className="sidebar--link" style={{color: 'black'}}>
               შესვლა
             </Link>
-            <Link to="/admin" className="sidebar--link" style={{color: 'black'}}>
-              ადმინკა
-            </Link>
+            {/*<Link to="/admin" className="sidebar--link" style={{color: 'black'}}>*/}
+            {/*  ადმინკა*/}
+            {/*</Link>*/}
           </div>
         </div>
 
